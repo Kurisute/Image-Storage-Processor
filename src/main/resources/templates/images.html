@@ -36,7 +36,10 @@
                 <td th:text="${imageGallery.description}"></td>
                 <td th:text="${imageGallery.price}"></td>
                 <td th:text="${#dates.format({imageGallery.createDate}, 'dd-MM-yyyy')}"/></td>
-               <td><a th:href="@{/image/imageDetails(id=${imageGallery.id})}" class="btn btn-info text-right" target="_blank">View</a></td>
+               <td><a th:href="@{/image/imageDetails(id=${imageGallery.id})}" class="btn btn-info text-right" target="_blank">View</a>
+                   <a th:href="@{${'/image/display/'+ imageGallery.id}}" download="proposed_file_name" class="btn btn-info text-right">Download</a></td>
+
+
             </tr>
         </tbody>
     </table>
