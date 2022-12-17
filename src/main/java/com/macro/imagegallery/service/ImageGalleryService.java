@@ -18,7 +18,7 @@ public class ImageGalleryService {
 	private ImageGalleryRepository imageGalleryRepository;
 	
 	public void saveImage(ImageGallery imageGallery) {
-		imageGalleryRepository.save(imageGallery);	
+		imageGalleryRepository.save(imageGallery);
 	}
 
 	public List<ImageGallery> getAllActiveImages() {

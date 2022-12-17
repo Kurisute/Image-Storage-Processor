@@ -30,7 +30,7 @@ public class ImageGallery {
     private double price;
 
 	@Column(name = "username",nullable = false,columnDefinition = "varchar(255) default 'public'")
-	private String username;
+	private String username = "public";
 	@Lob
     @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
     private byte[] image;
