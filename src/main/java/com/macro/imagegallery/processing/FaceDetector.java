@@ -1,3 +1,5 @@
+package com.macro.imagegallery.processing;
+
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
@@ -56,6 +58,7 @@ public class FaceDetector {
 	// Unit Test
 	public static void main(String[] args) {
 		String envRootDir = System.getProperty("user.dir");
+		System.out.println(envRootDir);
 		String sampleDir = envRootDir + "\\sample";
 		Mat testimg = Imgcodecs.imread(sampleDir + "\\face_sample.jpg");
 		FaceDetector facedetector = new FaceDetector();
