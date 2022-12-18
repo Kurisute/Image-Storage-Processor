@@ -13,6 +13,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.core.MatOfRect;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.macro.imagegallery.entity.ImageGallery;
 import com.macro.imagegallery.service.ImageGalleryService;
+import com.macro.imagegallery.processing.ImageProcessor;
+import com.macro.imagegallery.processing.FaceDetector;
 
 
 @Controller
@@ -140,6 +146,39 @@ public class ImageGalleryController {
 		List<ImageGallery> images = imageGalleryService.getAllActiveImages();
 		map.addAttribute("images", images);
 		return "images";
+	}
+	
+	@GetMapping("/image/facedetect")
+	String faceDetection(@RequestParam("id") Long id, Optional<ImageGallery> imageGallery) {
+		// Read and Detect
+		log.info("Id :: " + id);
+		imageGallery = imageGalleryService.getImageById(id);
+		byte[] imagebytes = imageGallery.get().getImage();
+		String imgname = imageGallery.get().getName();
+		double price = imageGallery.get().getPrice();
+		String description = imageGallery.get().getDescription();
+		Date createdate = new Date();
+		
+		Mat imgMat = ImageProcessor.bytes2Mat(imagebytes);
+		FaceDetector facedetector = new FaceDetector();
+		String envRootDir = System.getProperty("user.dir");
+		facedetector.loadCascadeClassifier(envRootDir + "\\detection_model\\haarcascade_frontalface_alt.xml");
+		MatOfRect face_region = facedetector.detect(imgMat);
+		Mat retimg = facedetector.drawDetection(imgMat, face_region);
+		
+		// Save image
+		MatOfByte mob = new MatOfByte();
+		Imgcodecs.imencode(".jpg", retimg, mob);
+		byte[] byteArray = mob.toArray();
+		
+		ImageGallery imageGalleryNew = new ImageGallery();
+		imageGalleryNew.setName("detected_" + imgname);
+		imageGalleryNew.setPrice(price);
+		imageGalleryNew.setDescription(description);
+		imageGalleryNew.setCreateDate(createdate);
+		imageGalleryNew.setImage(byteArray);
+		imageGalleryService.saveImage(imageGalleryNew);
+		return "redirect:/image/show";
 	}
 }	
 

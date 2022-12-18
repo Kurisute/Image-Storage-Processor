@@ -3,6 +3,8 @@ package com.macro.imagegallery.processing;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 public class ImageProcessor {
@@ -16,6 +18,11 @@ public class ImageProcessor {
 		Mat retimg = null;
 		Imgproc.cvtColor(srcimg, retimg, Imgproc.COLOR_BGR2GRAY);
 		return retimg;
+	}
+	
+	public static Mat bytes2Mat(byte[] imgbytes) {
+		Mat imagemat = Imgcodecs.imdecode(new MatOfByte(imgbytes), Imgcodecs.IMREAD_UNCHANGED);
+		return imagemat;
 	}
 	
 	// For Unit Test
