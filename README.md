@@ -5,7 +5,10 @@
 In this project, there is a system for image processing based on client-server model. It will provide an interface for users to upload their own images, and send images to selected users in batch processing. Some complicated image process functions will be introduced from open source library.
 
 + Homepage Spring Boot Image Gallery Application
-++ Name: User can type your photo name, this will be recorded in database.
+
+
+
++ Name: User can type your photo name, this will be recorded in database.
 + Description: User can type description of your photo, this will be recorded in database.
 + Image: There is a button to upload the photo user choose into database.
 + Price: You can type price of user photo, this will be recorded in database.
