@@ -189,7 +189,33 @@ public class ImageGalleryController {
 		byte[] byteArray = mob.toArray();
 		
 		ImageGallery imageGalleryNew = new ImageGallery();
+		imageGalleryNew.setId(id+1);
 		imageGalleryNew.setName("detected_" + imgname);
+		imageGalleryNew.setPrice(price);
+		imageGalleryNew.setDescription(description);
+		imageGalleryNew.setCreateDate(createdate);
+		imageGalleryNew.setImage(byteArray);
+		imageGalleryService.saveImage(imageGalleryNew);
+		return "redirect:/image/show";
+	}
+	
+	@GetMapping("/image/gray")
+	String gray(@RequestParam("id") Long id, Optional<ImageGallery> imageGallery) {
+		log.info("Id :: " + id);
+		imageGallery = imageGalleryService.getImageById(id);
+		byte[] imagebytes = imageGallery.get().getImage();
+		String imgname = imageGallery.get().getName();
+		double price = imageGallery.get().getPrice();
+		String description = imageGallery.get().getDescription();
+		Date createdate = new Date();
+		
+		Mat imgMat = ImageProcessor.bytes2Mat(imagebytes);
+		Mat retimg = ImageProcessor.RGB2Gray(imgMat);
+		byte[] byteArray = ImageProcessor.mat2Byte(retimg);
+		
+		ImageGallery imageGalleryNew = new ImageGallery();
+		imageGalleryNew.setId(id+1);
+		imageGalleryNew.setName("gray_" + imgname);
 		imageGalleryNew.setPrice(price);
 		imageGalleryNew.setDescription(description);
 		imageGalleryNew.setCreateDate(createdate);

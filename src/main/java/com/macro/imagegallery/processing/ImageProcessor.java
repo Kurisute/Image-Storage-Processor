@@ -14,15 +14,21 @@ public class ImageProcessor {
 	
 	public ImageProcessor(){ }
 	
-	public Mat BGR2Gray(Mat srcimg) {
-		Mat retimg = null;
-		Imgproc.cvtColor(srcimg, retimg, Imgproc.COLOR_BGR2GRAY);
+	public static Mat RGB2Gray(Mat srcimg) {
+		Mat retimg = srcimg;
+		Imgproc.cvtColor(srcimg, retimg, Imgproc.COLOR_RGB2GRAY);
 		return retimg;
 	}
 	
 	public static Mat bytes2Mat(byte[] imgbytes) {
 		Mat imagemat = Imgcodecs.imdecode(new MatOfByte(imgbytes), Imgcodecs.IMREAD_UNCHANGED);
 		return imagemat;
+	}
+	
+	public static byte[] mat2Byte(Mat imgmat) {
+		MatOfByte mob = new MatOfByte();
+		Imgcodecs.imencode(".jpg", imgmat, mob);
+		return mob.toArray();
 	}
 	
 	// For Unit Test

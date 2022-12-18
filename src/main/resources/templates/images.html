@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Test Project</title>
+  <title>JAVA Final Project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -10,7 +10,7 @@
 </head>
 <body>
 <br>
-<h1 class="text-center">Spring Boot Image Gallery Application
+<h1 class="text-center">Image Storage & Processor
 <a href="/home" class="btn btn-danger text-right">Go Home</a>
 </h1>
 <br><br>
@@ -41,7 +41,8 @@
                    <a th:href="@{${'/image/display/'+ imageGallery.id}}" download="${imageGallery.name}" class="btn btn-info text-right">Download</a><br><br>
                    <a th:href="@{/image/delete2(id=${imageGallery.id})}"  class="btn btn-info text-right" type="submit">Delete</a><br><br>
 <!--                   <a th:action="|@{/image/delete/${imageGallery.id}}|" th:method="delete" class="btn btn-info text-right" type="submit">Delete</a><br><br>-->
-                   <a th:href="@{/image/facedetect(id=${imageGallery.id})}" class="btn btn-info text-right" target="_blank">Detect</a>
+                   <a th:href="@{/image/facedetect(id=${imageGallery.id})}" class="btn btn-info text-right" type="submit">Detect</a>
+                   <a th:href="@{/image/gray(id=${imageGallery.id})}" class="btn btn-info text-right" type="submit">Gray</a>
                </td>
 
 
