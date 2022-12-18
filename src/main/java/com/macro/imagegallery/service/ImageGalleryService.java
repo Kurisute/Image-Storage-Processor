@@ -21,6 +21,8 @@ public class ImageGalleryService {
 		imageGalleryRepository.save(imageGallery);
 	}
 
+	public void deleteImageById(Long id) {imageGalleryRepository.deleteById(id);}
+
 	public List<ImageGallery> getAllActiveImages() {
 		return imageGalleryRepository.findAll();
 	}

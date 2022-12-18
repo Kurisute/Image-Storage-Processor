@@ -1,10 +1,46 @@
 package com.macro.imagegallery.service;
 
+
 import com.macro.imagegallery.entity.User;
+import com.macro.imagegallery.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
-public interface UserService {
+import java.util.Arrays;
+import java.util.HashSet;
 
-    void save(User user);
+@Service
+public class UserService {
 
-    User findByUsername(String username);
+    private UserRepository userRepository;
+    // private RoleRepository roleRepository;
+    //private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public UserService(UserRepository userRepository
+                       //RoleRepository roleRepository,
+                       //BCryptPasswordEncoder bCryptPasswordEncoder
+    ) {
+        this.userRepository = userRepository;
+        //this.roleRepository = roleRepository;
+        //this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+//    public User findUserByEmail(String email) {
+//        return userRepository.findByEmail(email);
+//    }
+
+    public User findUserByUsername(String userName) {
+        return userRepository.findByUsername(userName);
+    }
+
+    public User saveUser(User user) {
+        //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setActive(true);
+//        Role userRole = roleRepository.findByRole("ADMIN");
+//        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        return userRepository.save(user);
+    }
+
 }
