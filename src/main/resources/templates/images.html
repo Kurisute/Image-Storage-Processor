@@ -39,10 +39,11 @@
                <td>
                    <a th:href="@{/image/imageDetails(id=${imageGallery.id})}" class="btn btn-info text-right" target="_blank">View</a><br><br>
                    <a th:href="@{${'/image/display/'+ imageGallery.id}}" download="${imageGallery.name}" class="btn btn-info text-right">Download</a><br><br>
-                   <a th:href="@{/image/delete2(id=${imageGallery.id})}"  class="btn btn-info text-right" type="submit">Delete</a><br><br>
+
 <!--                   <a th:action="|@{/image/delete/${imageGallery.id}}|" th:method="delete" class="btn btn-info text-right" type="submit">Delete</a><br><br>-->
-                   <a th:href="@{/image/facedetect(id=${imageGallery.id})}" class="btn btn-info text-right" type="submit">Detect</a>
-                   <a th:href="@{/image/gray(id=${imageGallery.id})}" class="btn btn-info text-right" type="submit">Gray</a>
+                   <a th:href="@{/image/facedetect(id=${imageGallery.id})}" class="btn btn-info text-right"  type="submit">Detect</a><br><br>
+                   <a th:href="@{/image/gray(id=${imageGallery.id})}" class="btn btn-info text-right" type="submit">Gray</a><br><br>
+                   <a th:href="@{/image/delete2(id=${imageGallery.id})}"  class="btn btn-info text-right" style="background-color: #c70000; border-color:#b30000 " type="submit">Delete</a><br><br>
                </td>
 
 

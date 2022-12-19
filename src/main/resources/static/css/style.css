@@ -1969,6 +1969,10 @@ select.form-control.option-w3ls {
     border-radius: 0;
 }
 
+.form-control-file {
+    border-radius: 0;
+}
+
 /*-- //Payment page --*/
 
 /*-- about page --*/
