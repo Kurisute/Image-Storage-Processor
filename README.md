@@ -1,4 +1,4 @@
-# Introduction of Java Final Project 
+# Introduction of Java Final Project(Image Storage & Processor)
 ## CS-GY 9053
 ### Professor: Constantine Christakos
 #### Zuyang Ma N17026033, Yichen Xie N13905325, Houze Liu N13545008 
