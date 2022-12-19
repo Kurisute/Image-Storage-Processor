@@ -22,14 +22,14 @@
                 <th>Name</th>
                 <th>Image</th>
                 <th>Description</th>
-                <th>Price</th>
+                <th>Price($)</th>
                 <th>Created date</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody th:with="count=0">
         <tr th:each = "imageGallery, hh : ${images}">           
-                <td th:with="count=${count + 1}" th:text="${count}"></td>
+                <td th:text="${imageGallery.id}"></td>
                 <td th:text="${imageGallery.name}"></td>
                 <td><img th:src="@{${'/image/display/'+ imageGallery.id}}" 
                 class="card img-fluid" style="width:300px" alt=""/></td>
