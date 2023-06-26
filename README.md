@@ -1,5 +1,5 @@
-# Introduction of Java Final Project(Image Storage & Processor)
-## CS-GY 9053
+# Image Storage & Processor
+## Final Project for CS-GY 9053
 ### Professor: Constantine Christakos
 #### Zuyang Ma N17026033, Yichen Xie N13905325, Houze Liu N13545008
 In this project, there is a system for image processing based on Spring framework under model–view–controller pattern. It will provide an interface for users to upload their own images, and modify with structured methods. Some complicated image process functions will be introduced from open source library.
